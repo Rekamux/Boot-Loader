@@ -1,0 +1,31 @@
+SCHUMACHER AXEL
+
+BOOT LOADER ON ARM 7 TDMI
+
+Make commands:
+
+  make program [prog=<programme.bin>]
+    Copies prog program placed on exec/ in ram at address 0c000000 (default: prog=playMusic.bin)
+
+  make
+    Compiles EVERYTHING
+
+  make clean
+    Deletes object files, binaries, lst, recovery files ~, and so on...
+
+  make jump
+    Asks boot loader to execute 0c000000 address.
+
+  make music [mid=<music.mid>] [chan=<# channel>]
+    Loads a music placed in midi/fichiers_midi in 0c500000 by choosing the channel (default: mid=still_alive.mid chan=0)
+
+To flash the boot loader on a card:
+
+  go on root folder
+  make
+  launch openocd in a terminal
+  launch telnet localhost 4444 in an other
+  do cat flashCommand in a third in order to fetch the command and give it to telnet
+  kill openocd
+  reboot card
+  make program && make music mid=imperial.mid && make jump

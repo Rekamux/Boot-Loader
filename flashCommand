@@ -1,0 +1,1 @@
+flash write_image erase prog3000/prog3000;flash write_image erase bootLoader/bootLoader
